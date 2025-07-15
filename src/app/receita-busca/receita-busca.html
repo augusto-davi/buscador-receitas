@@ -1,1 +1,9 @@
-<p>receita-busca works!</p>
+<div class="container">
+  <h1>Buscador de Receitas</h1>
+  <input
+    [(ngModel)]="ingrediente"
+    placeholder="Digite um ingrediente"
+    class="campo-busca"
+  >
+  <button (click)="buscarReceitas()">Buscar</button>
+</div>
