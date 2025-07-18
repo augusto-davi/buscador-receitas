@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class Receita {
   private http = inject(HttpClient);
-  private baseUrl = 'https://www.themealdb.com/api/json/v1/1';
+  private baseUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
   
   buscarPorIngrediente(ingrediente: string){
-    return this.http.get(`${this.baseUrl}/filter.php?i=${ingrediente}`);
+    return this.http.get(`${this.baseUrl}${ingrediente}`);
   }
 }
