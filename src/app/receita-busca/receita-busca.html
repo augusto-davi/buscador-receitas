@@ -7,6 +7,9 @@
   >
   <button (click)="buscarReceitas()">Buscar</button>
 
+  <p *ngIf="carregando">Carregando receitas...</p>
+  <p *ngIf="erro">{{erro}}</p>
+
   <div *ngIf="receitas.length > 0">
     <h2>Resultados:</h2>
     <div class="grid">
