@@ -14,12 +14,23 @@ export class ReceitaBusca {
   ingrediente = '';
   receitas: any[] = [];
   receitaService = inject(Receita);
+  carregando = false;
+  erro = '';
 
-  buscarReceitas(){
-    if(!this.ingrediente.trim()) return;
+  buscarReceitas() {
+    if (!this.ingrediente.trim()) return;
 
-    this.receitaService.buscarPorIngrediente(this.ingrediente.trim()).subscribe((res: any) => {
-      this.receitas = res.meals || [];
+    this.carregando = true;
+
+    this.receitaService.buscarPorIngrediente(this.ingrediente.trim()).subscribe({
+      next: (res: any) => {
+        this.receitas = res.meals || [];
+        this.carregando = false;
+      },
+      error: (err) => {
+        this.erro = 'Erro ao buscar receitas.';
+        this.carregando = false;
+      }
     });
   }
 }
