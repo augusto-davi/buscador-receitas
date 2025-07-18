@@ -6,4 +6,14 @@
     class="campo-busca"
   >
   <button (click)="buscarReceitas()">Buscar</button>
+
+  <div *ngIf="receitas.length > 0">
+    <h2>Resultados:</h2>
+    <div class="grid">
+      <div class="card" *ngFor="let receita of receitas">
+        <img [src]="receita.strMealThumb" alt="Imagem da receita"/>
+        <h3>{{ receita.strMeal }}</h3>
+      </div>
+    </div>
+  </div>
 </div>

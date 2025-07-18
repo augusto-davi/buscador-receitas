@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Receita } from './service/receita';
 
@@ -12,8 +12,14 @@ import { Receita } from './service/receita';
 })
 export class ReceitaBusca {
   ingrediente = '';
+  receitas: any[] = [];
+  receitaService = inject(Receita);
 
   buscarReceitas(){
-    console.log('Buscando receitas com:', this.ingrediente);
+    if(!this.ingrediente.trim()) return;
+
+    this.receitaService.buscarPorIngrediente(this.ingrediente.trim()).subscribe((res: any) => {
+      this.receitas = res.meals || [];
+    });
   }
 }
