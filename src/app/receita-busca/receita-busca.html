@@ -16,4 +16,8 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="receitas.length === 0 && ingrediente">
+    <p>Nenhuma receita encontrada para "{{ ingrediente }}"</p>
+  </div>
 </div>
